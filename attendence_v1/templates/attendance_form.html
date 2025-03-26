@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Attendance</h2>
+  <p>Use this form to clock in or clock out an employee.</p>
+
+  <form method="POST">
+    <label for="employee_id">Select Employee:</label><br>
+    <select id="employee_id" name="employee_id" required>
+      <option value="">-- Choose an Employee --</option>
+      {% for e in employees %}
+      <option value="{{ e.id }}">{{ e.first_name }} {{ e.last_name }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+
+    <label for="date">Date (YYYY-MM-DD):</label><br>
+    <input type="date" id="date" name="date" />
+    <p style="font-size: 0.9em; color: #666;">If blank, today's date will be used.</p>
+    <br>
+
+    <label>Action:</label><br>
+    <input type="radio" name="action" value="clock_in" checked /> Clock In
+    <input type="radio" name="action" value="clock_out" /> Clock Out
+    <br><br>
+
+    <button class="btn" type="submit">Submit</button>
+  </form>
+{% endblock %}

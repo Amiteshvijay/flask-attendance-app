@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+  <p>Welcome to the Apna Family Attendance Management System. Here's an overview for today ({{ today.strftime('%B %d, %Y') }}):</p>
+
+  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <div class="card">
+      <h3>Total Employees</h3>
+      <p style="font-size: 2em;">{{ total_employees }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Clocked In Today</h3>
+      <p style="font-size: 2em;">{{ clocked_in }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Clocked Out Today</h3>
+      <p style="font-size: 2em;">{{ clocked_out }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Quick Actions</h3>
+  <ul>
+    <li><a href="{{ url_for('employee_list') }}">Manage Employees</a></li>
+    <li><a href="{{ url_for('attendance_form') }}">Mark Attendance</a></li>
+    <li><a href="{{ url_for('attendance_list') }}">View Attendance Records</a></li>
+  </ul>
+{% endblock %}

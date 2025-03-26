@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Employees</h2>
+  
+  <!-- List Existing Employees -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in employees %}
+      <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.first_name }} {{ e.last_name }}</td>
+        <td>{{ e.email }}</td>
+        <td>{{ e.department }}</td>
+        <td>{{ e.salary }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Add New Employee Form -->
+  <h3>Add a New Employee</h3>
+  <form action="{{ url_for('create_employee') }}" method="POST">
+    <label>First Name:</label><br>
+    <input type="text" name="first_name" /><br><br>
+
+    <label>Last Name:</label><br>
+    <input type="text" name="last_name" /><br><br>
+
+    <label>Email:</label><br>
+    <input type="text" name="email" /><br><br>
+
+    <label>Department:</label><br>
+    <input type="text" name="department" /><br><br>
+
+    <label>Salary:</label><br>
+    <input type="number" step="0.01" name="salary" /><br><br>
+
+    <button class="btn" type="submit">Add Employee</button>
+  </form>
+{% endblock %}
